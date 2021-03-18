@@ -1,0 +1,4 @@
+enum BackButtonState {
+  Enabled,
+  Disabled,
+}

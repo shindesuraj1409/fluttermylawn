@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ll_app_key" translatable="false">@string/localytics_key</string>
+    <bool name="ll_referral_receiver_enabled">true</bool>
+    <bool name="ll_push_tracking_activity_enabled">true</bool>
+    <bool name="ll_fcm_push_services_enabled">true</bool>
+    <bool name="ll_places_enabled">false</bool>
+    <bool name="ll_places_background_service_enabled">false</bool>
+    <integer name="ll_session_timeout_seconds">15</integer>
+    <string name="ll_default_push_channel_id" translatable="false">ml_localytics</string>
+    <string name="ll_default_push_channel_name" translatable="false">ML_Localytics</string>
+    <string name="ll_default_push_channel_description" translatable="false"/>
+    <integer name="ll_default_push_channel_priority">4</integer>
+    <string name="ll_default_places_channel_id" translatable="false">localytics_default</string>
+    <string name="ll_default_places_channel_name" translatable="false">Default</string>
+    <string name="ll_default_places_channel_description" translatable="false"/>
+    <integer name="ll_default_places_channel_priority">4</integer>
+</resources>

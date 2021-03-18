@@ -1,0 +1,11 @@
+include: package:pedantic/analysis_options.yaml
+
+linter:
+  rules:
+    prefer_final_locals: true
+    avoid_print: true
+    cancel_subscriptions: true
+    close_sinks: true
+analyzer:
+  errors:
+    unused_import: error

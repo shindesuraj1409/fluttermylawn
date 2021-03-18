@@ -1,0 +1,64 @@
+{
+  "project_info": {
+    "project_number": "822600392617",
+    "firebase_url": "https://dtc-develop-ecomm.firebaseio.com",
+    "project_id": "dtc-develop-ecomm",
+    "storage_bucket": "dtc-develop-ecomm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822600392617:android:b8ad4178a83e02167d2eb8",
+        "android_client_info": {
+          "package_name": "com.scotts.lawnapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822600392617-7skpm190q2bbdm0sb3nn2nt17ah108ut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scotts.lawnapp",
+            "certificate_hash": "4e5ff71108c7f43b117ddce1be43451ef6140090"
+          }
+        },
+        {
+          "client_id": "822600392617-vk3vs0au0fi31jfkq7hk3cb2pcmrhgoe.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.scotts.lawnapp",
+            "certificate_hash": "e0444a6ad6080a345af77b4046c97fae27e08070"
+          }
+        },
+        {
+          "client_id": "822600392617-40l5sn6p5hsfi7j3k7a2nrq6vbrkjmgg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcXidAthi6Qd2Hj4EpucJHcmEKTwMBLzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822600392617-40l5sn6p5hsfi7j3k7a2nrq6vbrkjmgg.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "822600392617-ebj13pl1m7dd1crtv036lcslq25tdmas.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.scotts.lawnapp",
+                "app_store_id": "372269879"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

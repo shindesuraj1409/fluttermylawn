@@ -1,0 +1,215 @@
+name: my_lawn
+description: My Lawn
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 0.1.0+0
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: 1.22.6
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  pedantic: ^1.8.0
+  connectivity: ^0.4.8+2
+  device_info: ^1.0.0
+  http: ^0.12.2
+  http_proxy: ^1.1.0
+  http_interceptor: ^0.3.2
+  logger: ^0.7.0
+  logger_flutter: ^0.7.1
+  package_info: ">=0.4.0+16 <2.0.0"
+  url_launcher: ^5.7.10
+  path_provider: ^1.6.7
+  flutter_email_sender: ^3.0.1
+  mask_text_input_formatter: ^1.0.7
+  webview_flutter: ^1.0.0
+  uuid: ^2.1.0
+  intl: ^0.16.1
+  google_maps_flutter: ^1.0.6
+  geolocator: ^5.3.2+2
+  rxdart: ^0.24.0
+  location: ^2.5.4
+  cached_network_image: ^2.2.0+1
+  permission_handler: ^5.0.1+1
+  pub_semver: ^1.4.4
+  app_settings: ^4.0.2
+  image_picker: ^0.6.7+21
+  flushbar: ^1.10.4
+  flutter_staggered_grid_view: ^0.3.2
+  uni_links: ^0.4.0
+  circular_check_box: ^1.0.4
+  contentful_rich_text: ^0.1.2
+  youtube_player_flutter: ^7.0.0+7
+  flat: ^0.2.0
+  custom_switch_button: ^0.5.0
+  intersperse: ^1.0.1+1
+  graphql_flutter: ^3.1.0
+  scroll_to_index: ^1.0.6
+  cryptography: ^1.4.1
+  google_sign_in: ^4.5.4
+  sign_in_with_apple: ^2.5.4
+  flutter_facebook_login: ^3.0.0
+  jwt_decoder: ^1.0.3
+  fraction: ^1.2.1
+  fl_chart: ^0.12.0
+  path: ^1.7.0
+  shimmer: ^1.1.2
+  flutter_html: ^1.1.1
+  table_calendar: ^2.3.3
+  
+  # Adobe places
+  flutter_acpcore: ^1.0.0-beta.3
+  flutter_acpplaces: ^1.0.0
+  flutter_acpplaces_monitor: ^1.0.0
+
+  flutter_acpanalytics: ^1.0.0
+  appsflyer_sdk: ^6.0.5
+
+  # Firebase
+  firebase_crashlytics: ^0.2.1
+  firebase_remote_config: ^0.4.2
+  firebase_messaging: ^7.0.2
+  firebase_core: ^0.5.0
+  firebase_performance: ^0.4.2
+  cloud_firestore: ^0.14.4
+
+  # Bloc
+  # bloc: ^6.0.0
+  flutter_bloc: ^6.0.0
+  equatable: ^1.2.5
+
+  flutter_phoenix: ^0.1.0
+
+  flutter_acpuserprofile:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/plugins/flutter-acpuserprofile.git
+      ref: master
+  analytics:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/analytics.git
+      ref: develop
+  bus:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/bus.git
+      ref: master
+  data:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/data.git
+      ref: master
+  dynamic_links_service:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/dynamic_links_service.git
+      ref: develop
+  geolocation:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/geolocation.git
+      ref: develop
+  local_storage:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/local_storage.git
+      ref: develop
+  navigation:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/navigation.git
+      ref: develop
+  registry:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/registry.git
+      ref: develop
+  localytics_plugin:
+    git:
+      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/plugins/localytics.git
+      ref: develop
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.8.1
+  test: any
+  flutter_test:
+    sdk: flutter
+  bloc_test: 7.1.0
+  mockito: 4.1.2
+  flutter_driver:
+    sdk: flutter
+# To update icons, run:
+#   flutter pub run flutter_launcher_icons:main
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/app_icon.png"
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+  # To add assets to your application, add an assets section, like this:
+  # assets:
+  #  - images/a_dot_burr.jpeg
+  #  - images/a_dot_ham.jpeg
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/smg_logo.png
+    - assets/images/
+    - assets/images/2.0x/
+    - assets/images/3.0x/
+    - assets/images/4.0x/
+    - assets/gifs/
+    - assets/icons/
+    - assets/icons/2.0x/
+    - assets/icons/3.0x/
+    - assets/icons/4.0x/
+    - assets/icons/subscription-card/
+
+  fonts:
+    - family: ProximaNova
+      fonts:
+        - asset: assets/fonts/ProximaNova-Light.otf
+          weight: 300
+        - asset: assets/fonts/ProximaNova-Regular.otf
+          weight: 400
+        - asset: assets/fonts/ProximaNova-Regular.otf
+          weight: 500
+        - asset: assets/fonts/ProximaNova-Semibold.otf
+          weight: 600
+        - asset: assets/fonts/ProximaNova-Bold.otf
+          weight: 700
+        - asset: assets/fonts/ProximaNova-Extrabold.otf
+          weight: 800

@@ -1,0 +1,57 @@
+default:
+  tags:
+    - docker
+  image: cirrusci/flutter:1.22.6
+  retry:
+    max: 2
+    when:
+      - unknown_failure
+      - api_failure
+      - stuck_or_timeout_failure
+      - runner_system_failure
+      - missing_dependency_failure
+      - runner_unsupported
+
+stages:
+  - test_coverage
+
+test_coverage:
+  stage: test_coverage
+  before_script:
+    ### Add deploy key into build to have possibility to checkout dependencies via ssh
+    - eval $(ssh-agent -s)
+    - chmod 600 $DEPENDENCY_DEPLOY_SSH_PRIVATE_KEY
+    - ssh-add $DEPENDENCY_DEPLOY_SSH_PRIVATE_KEY
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan gitlab.com >> ~/.ssh/known_hosts
+
+    ### Install python to have possibility to use lcov_cobertura.py script to highlight non-coverage lines in Merge requests
+    - apt-get update && apt-get install python -y
+    - wget https://raw.githubusercontent.com/eriwen/lcov-to-cobertura-xml/master/lcov_cobertura/lcov_cobertura.py
+
+    ### Check flutter and install it dependency
+    - flutter doctor
+    - flutter clean
+    - flutter pub get
+  script:
+    - flutter test --coverage ./lib
+  after_script:
+    - mkdir outputs
+    ### Convert lcov tests into cobertura format. To highlight non-coverage lines in Merge requests
+    - python lcov_cobertura.py coverage/lcov.info --output outputs/coverage.xml
+
+    ### Convert into lcov html
+    - lcov -r coverage/lcov.info '*/__test*__/*' -o coverage/lcov_cleaned.info
+    - genhtml coverage/lcov_cleaned.info --output=coverage
+  artifacts:
+    expire_in: 1 week
+    reports:
+      cobertura: outputs/coverage.xml
+    expose_as: 'coverage html'
+    paths:
+      - coverage/
+  only:
+    - development
+    - master
+    - merge_requests

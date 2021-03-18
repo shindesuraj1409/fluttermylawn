@@ -1,0 +1,124 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+def dartEnvironmentVariables = [
+    GMAPS_ANDROID_KEY: '###',
+    LOCALYTICS_ANDROID_KEY: '###'
+]
+
+if (project.hasProperty('dart-defines')) {
+    dartEnvironmentVariables = dartEnvironmentVariables + project.property('dart-defines')
+        .split(',')
+        .findAll { it.contains('ANDROID')  == true}
+        .collectEntries{ entry ->
+            def pair = URLDecoder.decode(entry).split('=')
+            [(pair.first()): pair.last()]
+        }
+
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.firebase.crashlytics'
+
+android {
+    compileSdkVersion 30
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.scotts.lawnapp"
+        minSdkVersion 28
+        targetSdkVersion 30
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+        manifestPlaceholders = [
+            GOOGLE_MAPS_KEY: dartEnvironmentVariables.GMAPS_ANDROID_KEY,
+            LOCALYTICS_ANDROID_KEY: dartEnvironmentVariables.LOCALYTICS_ANDROID_KEY
+        ]
+    }
+
+    buildTypes {
+        release {
+            resValue("string", "localytics_key", dartEnvironmentVariables.LOCALYTICS_ANDROID_KEY)
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            resValue("string", "localytics_key", dartEnvironmentVariables.LOCALYTICS_ANDROID_KEY)
+        }
+    }
+
+//    signingConfigs {
+//        debug {
+//            storeFile rootProject.file('debug.jks')
+//            keyAlias dartEnvironmentVariables.ANDROID_KEYSTORE_ALIAS
+//            keyPassword dartEnvironmentVariables.ANDROID_KEYSTORE_PASSWORD
+//            storePassword dartEnvironmentVariables.ANDROID_STORE_PASSWORD
+//        }
+//    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    // https://github.com/FirebaseExtended/flutterfire/issues/2077#issuecomment-631029256
+    implementation 'com.google.firebase:firebase-messaging:20.3.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
+
+    implementation 'com.adobe.marketing.mobile:mobileservices:1.+'
+    implementation 'com.adobe.marketing.mobile:places-monitor:2.+'
+    implementation 'com.adobe.marketing.mobile:places:1.+'
+    implementation 'com.adobe.marketing.mobile:analytics:1.+'
+    implementation 'com.adobe.marketing.mobile:sdk-core:1.+'
+    implementation 'com.adobe.marketing.mobile:userprofile:1.+'
+
+    implementation 'androidx.core:core:1.3.2'
+    implementation 'com.localytics.android:library:6.1.0'
+    implementation 'com.google.android.gms:play-services-ads:16.0.0'
+    implementation 'com.android.installreferrer:installreferrer:1.1'
+    implementation 'com.appsflyer:af-android-sdk:5.4.5'
+    implementation 'com.android.installreferrer:installreferrer:2.1'
+}
+
+apply plugin: 'com.google.gms.google-services'
