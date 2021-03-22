@@ -128,10 +128,7 @@ dependencies:
     git:
       url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/packages/registry.git
       ref: develop
-  localytics_plugin:
-    git:
-      url: git@gitlab.com:scotts-miracle-gro/marketing/mobile-apps/framework/plugins/localytics.git
-      ref: develop
+
 
 dev_dependencies:
   flutter_launcher_icons: ^0.8.1
